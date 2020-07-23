@@ -113,9 +113,42 @@ fetch('https://api.github.com/users/rohunvora')
 .then(data => {
   console.log(data);
   let githubURL = data.url;
-  let guthubUsername = data.login;
+  let githubUsername = data.login;
   let githubName = data.name;
 
   let rohun = new GithubProfile(githubUsername, githubName, githubURL);
   rohun.intro();
+});
+
+let isMomHappy = false;
+// Promise
+// let willIGetNewPhone = new Promise(
+//     function (resolve, reject) {
+//         if (isMomHappy) {
+//             let phone = {
+//                 brand: 'Samsung',
+//                 color: 'black'
+//             };
+//             resolve(phone); // fulfilled
+//         } else {
+//             // let reason = new Error('mom is not happy');
+//             reject("Mom is not happy"); // reject
+//         }
+//     }
+// );
+let willIGetNewPhone = new Promise((resolve, reject) => {
+  if (isMomHappy) {
+    const phone = {
+      brand: 'iPhone',
+      color: 'red'
+    }
+    resolve(phone);
+  }
+  else {
+    reject('No phone');
+  }
 })
+// console.log(willIGetNewPhone);
+willIGetNewPhone.then(result => {
+  console.log(result);
+});
