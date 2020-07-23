@@ -56,14 +56,66 @@ function Artist(name) {
   this.name = name;
 }
 
-function bestArtist(name, album, ranking) {
+function BestArtist(name, album, ranking) {
   this.name = name;
   this.album = album;
   this.ranking = ranking;
+  this.intro = function() {
+    console.log("Hi my name is " + this.name);
+  }
 }
 
-let playboi = new bestArtist('Playboi Carti', 'Die Lit', 1);
-let frank = Artist('Frank Ocean', 'Blonde', 2);
+let playboi = new BestArtist('Playboi Carti', 'Die Lit', 1);
+let frank = new BestArtist('Frank Ocean', 'Blonde', 2);
 
 console.log(playboi);
 console.log(playboi.name);
+playboi.intro();
+frank.intro();
+
+
+class Car {
+  constructor(year, make, model, color) {
+    this.year = name;
+    this.make = make;
+    this.model = model;
+    this.color = color;
+  }
+
+  drive(){
+    console.log('Vroom');
+  }
+  intro() {
+    console.log('This car is a ' + this.make + ' ' + this.model);
+  }
+}
+
+let tesla = new Car(2020, 'Tesla', 'Model S', 'red');
+console.log(tesla)
+tesla.drive();
+tesla.intro();
+
+class GithubProfile{
+  constructor(username, name, url) {
+    this.username = username;
+    this.name = name;
+    this.url = url;
+  }
+  intro() {
+    console.log(`My name is ${this.name} and my username is @${this.username}`)
+  }
+}
+
+fetch('https://api.github.com/users/rohunvora')
+.then(response => {
+  return response.json();
+})
+.then(data => {
+  console.log(data);
+  let githubURL = data.url;
+  let guthubUsername = data.login;
+  let githubName = data.name;
+
+  let rohun = new GithubProfile(githubUsername, githubName, githubURL);
+  rohun.intro();
+})
